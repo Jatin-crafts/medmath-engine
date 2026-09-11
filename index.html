@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MedMath Engine - Clinical Dosage Solver</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="app-header">
+      <span class="badge">Clinical Proof-of-Work</span>
+      <h1>MedMath Engine</h1>
+      <p>Zero-error clinical dosage & IV drip rate calculator with dimensional analysis breakdowns.</p>
+    </header>
+
+    <div class="tab-nav">
+      <button class="tab-btn active" data-tab="drip-rate">IV Drip Rate (gtt/min)</button>
+      <button class="tab-btn" data-tab="flow-rate">Flow Rate (mL/hr)</button>
+      <button class="tab-btn" data-tab="weight-dose">Weight-Based Dose</button>
+    </div>
+
+    <main class="card">
+      <!-- Tab 1: IV Drip Rate -->
+      <section id="drip-rate" class="tab-content active">
+        <h2>IV Drip Rate Calculation</h2>
+        <div class="form-group">
+          <label for="drip-volume">Total Volume (mL)</label>
+          <input type="number" id="drip-volume" placeholder="e.g. 1000" min="0" step="any">
+        </div>
+        <div class="form-group">
+          <label for="drip-time">Infusion Time (minutes)</label>
+          <input type="number" id="drip-time" placeholder="e.g. 60 or 480 (8 hrs)" min="0" step="any">
+        </div>
+        <div class="form-group">
+          <label for="drop-factor">Drop Factor (gtt/mL)</label>
+          <select id="drop-factor">
+            <option value="10">10 gtt/mL (Macro)</option>
+            <option value="15" selected>15 gtt/mL (Standard Macro)</option>
+            <option value="20">20 gtt/mL (Macro)</option>
+            <option value="60">60 gtt/mL (Microdrip)</option>
+          </select>
+        </div>
+        <button class="btn" onclick="calculateDripRate()">Calculate Drip Rate</button>
+      </section>
+
+      <!-- Tab 2: IV Flow Rate -->
+      <section id="flow-rate" class="tab-content">
+        <h2>IV Flow Rate Calculation</h2>
+        <div class="form-group">
+          <label for="flow-volume">Total Volume (mL)</label>
+          <input type="number" id="flow-volume" placeholder="e.g. 500" min="0" step="any">
+        </div>
+        <div class="form-group">
+          <label for="flow-time">Time (Hours)</label>
+          <input type="number" id="flow-time" placeholder="e.g. 4" min="0" step="any">
+        </div>
+        <button class="btn" onclick="calculateFlowRate()">Calculate Flow Rate</button>
+      </section>
+
+      <!-- Tab 3: Weight-Based Dose -->
+      <section id="weight-dose" class="tab-content">
+        <h2>Weight-Based Dosage</h2>
+        <div class="form-group">
+          <label for="patient-weight">Patient Weight</label>
+          <div class="input-with-unit">
+            <input type="number" id="patient-weight" placeholder="e.g. 70" min="0" step="any">
+            <select id="weight-unit">
+              <option value="kg" selected>kg</option>
+              <option value="lbs">lbs</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="dose-order">Ordered Dose (mg/kg)</label>
+          <input type="number" id="dose-order" placeholder="e.g. 5" min="0" step="any">
+        </div>
+        <div class="form-group">
+          <label for="concentration">Drug Concentration on Hand (mg/mL)</label>
+          <input type="number" id="concentration" placeholder="e.g. 50" min="0" step="any">
+        </div>
+        <button class="btn" onclick="calculateWeightDose()">Calculate Required Volume</button>
+      </section>
+
+      <!-- Results Display -->
+      <div id="result-box" class="result-box hidden">
+        <div class="result-value" id="primary-result">--</div>
+        <div class="breakdown-title">Dimensional Analysis Breakdown:</div>
+        <div class="breakdown-steps" id="breakdown-steps">--</div>
+      </div>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

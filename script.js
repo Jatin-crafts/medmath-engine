@@ -100,3 +100,39 @@ weight = Math.round((weight / 2.2) * 10) / 10; // 154 / 2.2 = 70.0 kg exact
 
   displayResult(`${volumeToAdminister} mL to Administer`, steps);
 }
+
+// Dynamic Clinical Rounding Engine
+function formatClinicalResult(value, unit) {
+  if (unit === 'gtt/min') {
+    return Math.round(value) + ' gtt/min';
+  }
+  if (unit === 'mL' || unit === 'mL/hr') {
+    if (value < 1) {
+      // Pediatric / NICU / Small Doses: Round to 0.01 (Hundredths)
+      return (Math.round(value * 100) / 100).toFixed(2) + ' ' + unit;
+    } else {
+      // Adult / Standard Doses (> 1 mL): Round to 0.1 (Tenths)
+      return (Math.round(value * 10) / 10).toFixed(1) + ' ' + unit;
+    }
+  }
+  if (unit === 'kg') {
+    return (Math.round(value * 10) / 10).toFixed(1) + ' kg';
+  }
+  return value.toFixed(2) + ' ' + unit;
+}
+
+function copyBreakdown() {
+  const resultVal = document.getElementById("primary-result").innerText;
+  const stepsText = document.getElementById("breakdown-steps").innerText;
+  const fullText = `Result: ${resultVal}\n\nDimensional Analysis Breakdown:\n${stepsText}`;
+
+  navigator.clipboard.writeText(fullText).then(() => {
+    const btn = document.getElementById("copy-btn");
+    btn.innerText = "Copied to Clipboard!";
+    setTimeout(() => {
+      btn.innerText = "Copy Steps to Clipboard";
+    }, 2000);
+  }).catch(err => {
+    console.error("Failed to copy text: ", err);
+  });
+}

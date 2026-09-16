@@ -7,6 +7,11 @@
   --text-muted: #94a3b8;
   --border: #334155;
   --highlight: #38bdf8;
+  
+  /* Disclaimer Colors */
+  --warning-bg: rgba(245, 158, 11, 0.12);
+  --warning-text: #fcd34d;
+  --warning-border: rgba(245, 158, 11, 0.35);
 }
 
 * {
@@ -31,7 +36,7 @@ body {
 }
 
 .app-header {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   text-align: center;
 }
 
@@ -56,6 +61,18 @@ body {
 .app-header p {
   color: var(--text-muted);
   font-size: 0.9rem;
+}
+
+/* Academic Disclaimer Banner */
+.disclaimer-banner {
+  background: var(--warning-bg);
+  color: var(--warning-text);
+  border: 1px solid var(--warning-border);
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  margin-bottom: 1.25rem;
 }
 
 .tab-nav {
@@ -91,13 +108,8 @@ body {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
 }
 
-.tab-content {
-  display: none;
-}
-
-.tab-content.active {
-  display: block;
-}
+.tab-content { display: none; }
+.tab-content.active { display: block; }
 
 h2 {
   font-size: 1.15rem;
@@ -105,9 +117,7 @@ h2 {
   color: var(--text-main);
 }
 
-.form-group {
-  margin-bottom: 1rem;
-}
+.form-group { margin-bottom: 1rem; }
 
 label {
   display: block;
@@ -127,22 +137,11 @@ input, select {
   outline: none;
 }
 
-input:focus, select:focus {
-  border-color: var(--highlight);
-}
+input:focus, select:focus { border-color: var(--highlight); }
 
-.input-with-unit {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.input-with-unit input {
-  flex: 3;
-}
-
-.input-with-unit select {
-  flex: 1;
-}
+.input-with-unit { display: flex; gap: 0.5rem; }
+.input-with-unit input { flex: 3; }
+.input-with-unit select { flex: 1; }
 
 .btn {
   width: 100%;
@@ -158,9 +157,7 @@ input:focus, select:focus {
   transition: background-color 0.2s;
 }
 
-.btn:hover {
-  background-color: var(--accent-hover);
-}
+.btn:hover { background-color: var(--accent-hover); }
 
 .result-box {
   margin-top: 1.5rem;
@@ -170,9 +167,7 @@ input:focus, select:focus {
   border-radius: 0.375rem;
 }
 
-.result-box.hidden {
-  display: none;
-}
+.result-box.hidden { display: none; }
 
 .result-value {
   font-size: 1.35rem;
@@ -211,6 +206,76 @@ input:focus, select:focus {
   transition: all 0.2s ease-in-out;
 }
 
-.btn-secondary:hover {
-  background-color: rgba(2, 132, 199, 0.1);
+.btn-secondary:hover { background-color: rgba(2, 132, 199, 0.1); }
+
+/* Global Counter Styling */
+.usage-counter {
+  text-align: center;
+  margin: 1.25rem 0 1rem 0;
+  font-size: 0.825rem;
+  color: var(--text-muted);
+}
+
+.usage-counter span {
+  font-weight: 700;
+  color: var(--highlight);
+}
+
+/* Dark Mode Signup Box (Deep Indigo Accent) */
+.signup-card {
+  background: linear-gradient(135deg, #1e1b4b 0%, #1e293b 100%);
+  border: 1px solid #4f46e5;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  box-shadow: 0 10px 20px -5px rgba(79, 70, 229, 0.15);
+}
+
+.signup-card h3 {
+  font-size: 1.05rem;
+  color: #c7d2fe;
+  margin-bottom: 0.35rem;
+}
+
+.signup-text {
+  font-size: 0.825rem;
+  color: #94a3b8;
+  line-height: 1.45;
+  margin-bottom: 0.85rem;
+}
+
+.signup-text strong {
+  color: #e0e7ff;
+}
+
+.signup-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.signup-form input {
+  flex: 1;
+  background: #0f172a;
+  border: 1px solid #4338ca;
+  color: #f8fafc;
+}
+
+.signup-form input::placeholder {
+  color: #64748b;
+}
+
+.signup-form button {
+  background: #6366f1;
+  color: white;
+  border: none;
+  padding: 0.55rem 0.95rem;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.signup-form button:hover {
+  background: #4f46e5;
 }

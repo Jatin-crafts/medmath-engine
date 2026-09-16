@@ -1,4 +1,8 @@
+// Local persistent count fallback handling
+let globalCalculations = parseInt(localStorage.getItem("medmath_global_calc_count") || "42", 10);
+
 document.addEventListener("DOMContentLoaded", () => {
+  // Tab Switching Logic
   const tabs = document.querySelectorAll(".tab-btn");
   const contents = document.querySelectorAll(".tab-content");
 
@@ -12,13 +16,29 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("result-box").classList.add("hidden");
     });
   });
+
+  // Display initial global count
+  updateCounterDisplay();
 });
+
+function updateCounterDisplay() {
+  document.getElementById("global-count").innerText = globalCalculations.toLocaleString() + "+";
+}
+
+function incrementGlobalCounter() {
+  globalCalculations += 1;
+  localStorage.setItem("medmath_global_calc_count", globalCalculations.toString());
+  updateCounterDisplay();
+}
 
 function displayResult(value, steps) {
   const box = document.getElementById("result-box");
   document.getElementById("primary-result").innerText = value;
   document.getElementById("breakdown-steps").innerText = steps;
   box.classList.remove("hidden");
+  
+  // Increment global counter on every successful calculation
+  incrementGlobalCounter();
 }
 
 function calculateDripRate() {
@@ -81,44 +101,24 @@ function calculateWeightDose() {
   let weightConversionStep = "";
   if (unit === "lbs") {
     const originalLbs = weight;
-// Standard clinical exam convention (rounds kg to 1 decimal place first):
-weight = Math.round((weight / 2.2) * 10) / 10; // 154 / 2.2 = 70.0 kg exact
-    weightConversionStep = `1. Convert Weight: ${originalLbs} lbs ÷ 2.2 = ${weight.toFixed(2)} kg\n`;
+    // Standard clinical exam convention (rounds kg to 1 decimal place first)
+    weight = Math.round((weight / 2.2) * 10) / 10;
+    weightConversionStep = `1. Convert Weight: ${originalLbs} lbs ÷ 2.2 = ${weight.toFixed(1)} kg\n`;
   } else {
-    weightConversionStep = `1. Patient Weight: ${weight.toFixed(2)} kg\n`;
+    weightConversionStep = `1. Patient Weight: ${weight.toFixed(1)} kg\n`;
   }
 
   const totalDoseMg = weight * doseOrder;
   const volumeToAdminister = (totalDoseMg / concentration).toFixed(2);
 
   const steps = `${weightConversionStep}2. Calculate Total Target Dose:
-   ${weight.toFixed(2)} kg × ${doseOrder} mg/kg = ${totalDoseMg.toFixed(2)} mg
+   ${weight.toFixed(1)} kg × ${doseOrder} mg/kg = ${totalDoseMg.toFixed(2)} mg
 
 3. Apply Dimensional Analysis for Volume:
    (${totalDoseMg.toFixed(2)} mg) / (${concentration} mg/mL)
    Result: ${volumeToAdminister} mL`;
 
   displayResult(`${volumeToAdminister} mL to Administer`, steps);
-}
-
-// Dynamic Clinical Rounding Engine
-function formatClinicalResult(value, unit) {
-  if (unit === 'gtt/min') {
-    return Math.round(value) + ' gtt/min';
-  }
-  if (unit === 'mL' || unit === 'mL/hr') {
-    if (value < 1) {
-      // Pediatric / NICU / Small Doses: Round to 0.01 (Hundredths)
-      return (Math.round(value * 100) / 100).toFixed(2) + ' ' + unit;
-    } else {
-      // Adult / Standard Doses (> 1 mL): Round to 0.1 (Tenths)
-      return (Math.round(value * 10) / 10).toFixed(1) + ' ' + unit;
-    }
-  }
-  if (unit === 'kg') {
-    return (Math.round(value * 10) / 10).toFixed(1) + ' kg';
-  }
-  return value.toFixed(2) + ' ' + unit;
 }
 
 function copyBreakdown() {

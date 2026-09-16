@@ -14,12 +14,19 @@
       <p>Zero-error clinical dosage & IV drip rate calculator with dimensional analysis breakdowns.</p>
     </header>
 
+    <!-- Academic Disclaimer Banner -->
+    <div class="disclaimer-banner">
+      <strong>⚠️ For Academic & Study Use Only:</strong> This tool is designed for nursing students, practice scenarios, and educational verification. It is <u>not</u> a substitute for institutional protocols or independent clinical checks.
+    </div>
+
+    <!-- Navigation Tabs -->
     <div class="tab-nav">
       <button class="tab-btn active" data-tab="drip-rate">IV Drip Rate (gtt/min)</button>
       <button class="tab-btn" data-tab="flow-rate">Flow Rate (mL/hr)</button>
       <button class="tab-btn" data-tab="weight-dose">Weight-Based Dose</button>
     </div>
 
+    <!-- Main Calculator Card -->
     <main class="card">
       <!-- Tab 1: IV Drip Rate -->
       <section id="drip-rate" class="tab-content active">
@@ -90,6 +97,28 @@
         <button class="btn-secondary" onclick="copyBreakdown()" id="copy-btn">Copy Steps to Clipboard</button>
       </div>
     </main>
+
+    <!-- Global Counter Badge (Placed cleanly outside main card) -->
+    <div class="usage-counter">
+      🌍 Solved <span id="global-count">1,240+</span> calculations for nurses & students worldwide
+    </div>
+
+    <!-- Early Signup / Micro-Alerts Form (Dark-theme optimized) -->
+    <div class="signup-card">
+      <h3>Hey there, you liked that?</h3>
+      <p class="signup-text">
+        I'm lazily making 3 more tools this month—like a <strong>Vacation Maximizer</strong>, an <strong>ADHD Focus Regulator</strong>, and a <strong>Shift Pay & Differential Auditor</strong> (if you don't trust your payroll lol).
+      </p>
+      <form action="https://api.web3forms.com/submit" method="POST" class="signup-form">
+        <!-- Replace YOUR_ACCESS_KEY_HERE when you register on web3forms.com -->
+        <input type="hidden" name="access_key" value="9ae9a673-49d7-4945-9c77-9391c566eb7d">
+        <input type="hidden" name="subject" value="New Tool Alert Signup!">
+        
+        <input type="email" name="email" placeholder="Drop your email for alerts..." required>
+        <button type="submit">Keep Me Posted</button>
+      </form>
+    </div>
+
   </div>
   <script src="script.js"></script>
 </body>

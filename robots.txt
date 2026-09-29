@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://medmath-engine-jatin.vercel.app/sitemap.xml

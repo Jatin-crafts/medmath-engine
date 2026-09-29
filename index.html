@@ -3,14 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MedMath Engine - Clinical Dosage Solver</title>
+  
+  <!-- Primary Search Keywords: NCLEX Dosage Calculator, IV Drip Rate Calculator, Dimensional Analysis Practice -->
+  <title>NCLEX Dosage & IV Drip Rate Calculator | MedMath Suite</title>
+  <meta name="description" content="Free NCLEX dosage and IV drip rate calculator with step-by-step dimensional analysis breakdowns. Calculate gtt/min, mL/hr, and weight-based doses instantly.">
+  <link rel="canonical" href="https://medmath-engine-jatin.vercel.app/">
+  
+  <!-- Social Sharing / Open Graph (Reddit, iMessage, WhatsApp Previews) -->
+  <meta property="og:title" content="NCLEX Dosage & IV Drip Rate Calculator | MedMath Suite">
+  <meta property="og:description" content="Free, ad-free clinical dosage calculator with step-by-step dimensional analysis breakdowns for nursing students and RNs.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://medmath-engine-jatin.vercel.app/">
+
+  <!-- Google Analytics 4 (Replace G-XXXXXXXXXX with your actual Measurement ID) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <header class="app-header">
       <span class="badge">Clinical Proof-of-Work</span>
-      <h1>MedMath Engine</h1>
+      <h1>NCLEX Dosage & IV Drip Rate Calculator</h1>
       <p>Zero-error clinical dosage & IV drip rate calculator with dimensional analysis breakdowns.</p>
     </header>
 
@@ -98,19 +118,13 @@
       </div>
     </main>
 
-    <!-- Global Counter Badge (Placed cleanly outside main card) -->
-    <div class="usage-counter">
-      🌍 Solved <span id="global-count">1,240+</span> calculations for nurses & students worldwide
-    </div>
-
-    <!-- Early Signup / Micro-Alerts Form (Dark-theme optimized) -->
+    <!-- Early Signup / Micro-Alerts Form -->
     <div class="signup-card">
       <h3>Hey there, you liked that?</h3>
       <p class="signup-text">
         I'm lazily making 3 more tools this month—like a <strong>Vacation Maximizer</strong>, an <strong>ADHD Focus Regulator</strong>, and a <strong>Shift Pay & Differential Auditor</strong> (if you don't trust your payroll lol).
       </p>
       <form action="https://api.web3forms.com/submit" method="POST" class="signup-form">
-        <!-- Replace YOUR_ACCESS_KEY_HERE when you register on web3forms.com -->
         <input type="hidden" name="access_key" value="9ae9a673-49d7-4945-9c77-9391c566eb7d">
         <input type="hidden" name="subject" value="New Tool Alert Signup!">
         
@@ -118,6 +132,49 @@
         <button type="submit">Keep Me Posted</button>
       </form>
     </div>
+
+    <!-- Educational Reference Content (SEO Organic Traffic Engine) -->
+    <section class="edu-content">
+      <h2>How to Solve NCLEX IV Drip Rate & Dosage Calculations</h2>
+      <p>Mastering clinical dosage calculations is essential for nursing school exams and NCLEX prep. When calculating gravity-fed IV infusions without an electronic pump, nurses use drop rates (gtt/min) to manually titrate fluid administration.</p>
+
+      <h3>IV Drip Rate Formula (Dimensional Analysis)</h3>
+      <div class="formula-box">
+        <code>Drip Rate (gtt/min) = [ Total Volume (mL) × Drop Factor (gtt/mL) ] ÷ Total Time (minutes)</code>
+      </div>
+
+      <h3>Worked NCLEX Practice Example</h3>
+      <p><strong>Order:</strong> Administer 1,000 mL 0.9% Normal Saline over 8 hours. The IV tubing set has a drop factor of 15 gtt/mL.</p>
+      <ol>
+        <li><strong>Convert Time:</strong> 8 hours × 60 minutes = 480 minutes</li>
+        <li><strong>Calculate Total Drops:</strong> 1,000 mL × 15 gtt/mL = 15,000 drops</li>
+        <li><strong>Divide by Time:</strong> 15,000 ÷ 480 minutes = 31.25 gtt/min</li>
+        <li><strong>Apply Clinical Rounding:</strong> Drops cannot be split $\rightarrow$ Round to <strong>31 gtt/min</strong></li>
+      </ol>
+
+      <h3>Tubing Drop Factors Comparison</h3>
+      <ul>
+        <li><strong>Macrodrip Tubing (10, 15, or 20 gtt/mL):</strong> Large drops used for standard adult fluid boluses and routine infusions.</li>
+        <li><strong>Microdrip Tubing (60 gtt/mL):</strong> Delivers small drops (60 gtt/mL always equals the mL/hr flow rate). Used in pediatric, neonatal (NICU), and high-risk ICU drip titrations.</li>
+      </ul>
+
+      <h3>Common Exam Mistakes to Avoid</h3>
+      <ul>
+        <li><strong>Units Mismatch:</strong> Forgetting to convert hours into minutes before applying the gravity drip formula.</li>
+        <li><strong>Weight Conversions:</strong> Multiplying weight-based orders ($mg/kg$) using pounds ($lbs$) instead of converting to kilograms ($1\text{ kg} = 2.2\text{ lbs}$).</li>
+        <li><strong>Incorrect Rounding:</strong> Gravity drip rates must be rounded to the nearest whole drop, while pediatric volumes under $1\text{ mL}$ are rounded to the hundredths place ($0.01$).</li>
+      </ul>
+
+      <h3>Frequently Asked Questions</h3>
+      <div class="faq-item">
+        <strong>Q: What is the difference between mL/hr flow rate and gtt/min drip rate?</strong>
+        <p><strong>mL/hr (Flow Rate)</strong> is the volumetric rate programmed into an IV pump. <strong>gtt/min (Drip Rate)</strong> is the manual drop rate counted in a gravity drip chamber.</p>
+      </div>
+      <div class="faq-item">
+        <strong>Q: How does pediatric rounding differ from adult clinical rounding?</strong>
+        <p>Pediatric and high-risk small doses ($< 1\text{ mL}$) round to the hundredths place ($0.01\text{ mL}$). Adult doses ($> 1\text{ mL}$) round to the tenths place ($0.1\text{ mL}$).</p>
+      </div>
+    </section>
 
   </div>
   <script src="script.js"></script>

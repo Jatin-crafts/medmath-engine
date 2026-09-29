@@ -279,3 +279,61 @@ input:focus, select:focus { border-color: var(--highlight); }
 .signup-form button:hover {
   background: #4f46e5;
 }
+
+/* Educational Content Section */
+.edu-content {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.edu-content h2 {
+  color: var(--text-main);
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.edu-content h3 {
+  color: var(--highlight);
+  font-size: 1rem;
+  margin: 1.25rem 0 0.5rem 0;
+}
+
+.edu-content p, .edu-content ul, .edu-content ol {
+  margin-bottom: 0.75rem;
+}
+
+.edu-content ul, .edu-content ol {
+  padding-left: 1.25rem;
+}
+
+.edu-content li {
+  margin-bottom: 0.35rem;
+}
+
+.formula-box {
+  background-color: var(--bg-color);
+  border-left: 3px solid var(--accent);
+  padding: 0.75rem 1rem;
+  margin: 0.75rem 0;
+  border-radius: 0.375rem;
+  font-family: monospace;
+  color: var(--text-main);
+}
+
+.faq-item {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.faq-item strong {
+  color: var(--text-main);
+  display: block;
+  margin-bottom: 0.25rem;
+}
